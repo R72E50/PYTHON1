@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Home Page</h1>
+<a href="/add">Add Person</a>
+<table style="border: solid 1px;">
+    <thead>
+        <tr>
+            <th style="border: solid 1px;"> Last Name</th>
+            <th style="border: solid 1px;"> First Name</th>
+            <th style="border: solid 1px;"> Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for person in persons %}
+        <tr>
+            <td style="border: solid 1px;">{{ person.last_name }}</td>
+            <td style="border: solid 1px;">{{ person.first_name }}</td>
+            <td style="border: solid 1px;">
+                <a href="/edit/{{person.id}}">Edit</a>
+                <a href="/delete/{{person.id}}">Delete</a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td style="border: solid 1px;">No Record Found.</td>
+            <td style="border: solid 1px;"></td>
+            <td style="border: solid 1px;"></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock  %}

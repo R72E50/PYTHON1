@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="/edit/{{person.id}}" method="POST">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <label for="last_name">Last Name</label>
+    <input type="text" name="last_name" value="{{person.last_name}}">
+    <label for="first_name">First Name</label>
+    <input type="text" name="first_name" value="{{person.first_name}}">
+    <input type="Submit" value="edit">
+</form>
+{% endblock %}
